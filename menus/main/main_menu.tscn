@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://3ggukrllkha7"]
+
+[ext_resource type="Script" uid="uid://7yvo8ecacucf" path="res://menus/main/main_menu.gd" id="1_2rexg"]
+[ext_resource type="FontFile" uid="uid://c1q67vy31h48x" path="res://font/GeistPixel-Regular-VariableFont_ELSH.ttf" id="1_5je1j"]
+[ext_resource type="PackedScene" uid="uid://hcjb7kisw4lt" path="res://menus/settings/settings_menu.tscn" id="2_5vmsf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sbjwo"]
+font_size = 64
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_470mv"]
+font = ExtResource("1_5je1j")
+font_size = 20
+font_color = Color(0, 1, 0, 1)
+
+[node name="MainMenu" type="Control" unique_id=1601328185]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2rexg")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1193003345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=558832210]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_right = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacing" type="Control" parent="VBoxContainer" unique_id=1560132841]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=49082170]
+layout_mode = 2
+text = "Core Dump"
+label_settings = SubResource("LabelSettings_sbjwo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacing2" type="VBoxContainer" parent="VBoxContainer" unique_id=1949843163]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="Spacing" type="Control" parent="VBoxContainer/Spacing2" unique_id=501949170]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Spacing2" unique_id=1109028992]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/Spacing2/VBoxContainer" unique_id=26955604]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/Spacing2/VBoxContainer" unique_id=442560643]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/Spacing2/VBoxContainer" unique_id=1081497650]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Exit
+"
+
+[node name="Spacing2" type="Control" parent="VBoxContainer/Spacing2" unique_id=1661908933]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+mouse_filter = 1
+
+[node name="UsernameWidget" type="MarginContainer" parent="." unique_id=833164172]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 94.0
+grow_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UsernameWidget" unique_id=458278641]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="UsernameLabel" type="Label" parent="UsernameWidget/HBoxContainer" unique_id=1504094250]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "> Username:"
+label_settings = SubResource("LabelSettings_470mv")
+
+[node name="UsernameInput" type="LineEdit" parent="UsernameWidget/HBoxContainer" unique_id=905219522]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+placeholder_text = "Not Found"
+expand_to_text_length = true
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="SettingsMenu" parent="." unique_id=1942749035 instance=ExtResource("2_5vmsf")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, 1)
+offset_transform_visual_only = false

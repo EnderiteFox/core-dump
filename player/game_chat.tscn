@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://8tqy4johhhsh"]
+
+[ext_resource type="Script" uid="uid://55mxm7p32k82" path="res://player/game_chat.gd" id="1_mdbkp"]
+[ext_resource type="FontFile" uid="uid://c1q67vy31h48x" path="res://font/GeistPixel-Regular-VariableFont_ELSH.ttf" id="2_pu7dl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdbkp"]
+bg_color = Color(0, 0, 0, 0.27450982)
+
+[node name="GameChat" type="Control" unique_id=810777183]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_mdbkp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=322703371]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=201945141]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=153428422]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/margin_left = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/MarginContainer" unique_id=2034487505]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mdbkp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer" unique_id=883419494]
+layout_mode = 2
+
+[node name="ChatContent" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1592706438]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_fonts/normal_font = ExtResource("2_pu7dl")
+bbcode_enabled = true
+scroll_following = true
+
+[node name="ChatLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1613065213]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1296168911]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1431203426]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+mouse_filter = 2

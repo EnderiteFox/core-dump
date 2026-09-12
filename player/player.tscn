@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://nayrdjp0c8eh"]
+
+[ext_resource type="PackedScene" uid="uid://8tqy4johhhsh" path="res://player/game_chat.tscn" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cn4lo44rtoo0w" path="res://player/player.gd" id="1_rkbax"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kqu6x"]
+
+[node name="Player" type="CharacterBody3D" unique_id=334881088]
+script = ExtResource("1_rkbax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=451822149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_kqu6x")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=712296336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="GameChat" parent="." unique_id=810777183 instance=ExtResource("1_oul6g")]

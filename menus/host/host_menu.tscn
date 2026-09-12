@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://ch13g70vx117e"]
+
+[ext_resource type="Script" uid="uid://dhauccpmxcn8d" path="res://menus/host/host_menu.gd" id="1_duvid"]
+[ext_resource type="PackedScene" uid="uid://dag5y7klr5yce" path="res://menus/generic_popup/generic_popup.tscn" id="1_yqs34"]
+[ext_resource type="Script" uid="uid://rucb4q1p4fre" path="res://ui/slider_label.gd" id="3_fmgem"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wawh4"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_fmgem"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_duvid"]
+font_size = 20
+
+[node name="HostMenu" unique_id=1029054713 instance=ExtResource("1_yqs34")]
+script = ExtResource("1_duvid")
+
+[node name="TitleLabel" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1346699011) index="0" unique_id=1459121273]
+text = "Host"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent" parent_id_path=PackedInt32Array(2135805419) index="0" unique_id=98154882]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent/HBoxContainer" index="0" unique_id=1445639345]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lobby Name"
+label_settings = SubResource("LabelSettings_wawh4")
+
+[node name="LobbyNameLineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent/HBoxContainer" index="1" unique_id=1348766740]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Lobby"
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent" parent_id_path=PackedInt32Array(2135805419) index="1" unique_id=257673969]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent/VBoxContainer" index="0" unique_id=521534668]
+layout_mode = 2
+text = "Max players"
+label_settings = SubResource("LabelSettings_fmgem")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent/VBoxContainer" index="1" unique_id=101091955]
+layout_mode = 2
+
+[node name="NumPlayersSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent/VBoxContainer/HBoxContainer" index="0" unique_id=849445357]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.9
+min_value = 1.0
+max_value = 20.0
+value = 1.0
+rounded = true
+tick_count = 20
+ticks_on_borders = true
+ticks_position = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/PopupContent/VBoxContainer/HBoxContainer" index="1" unique_id=1480996100 node_paths=PackedStringArray("slider")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+text = "1"
+label_settings = SubResource("LabelSettings_duvid")
+horizontal_alignment = 1
+script = ExtResource("3_fmgem")
+slider = NodePath("../NumPlayersSlider")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1346699011) index="3" unique_id=1520673859]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="StartButton" type="Button" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer" index="0" unique_id=202032326]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"

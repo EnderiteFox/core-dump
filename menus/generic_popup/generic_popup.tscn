@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://dag5y7klr5yce"]
+
+[ext_resource type="Script" uid="uid://b7pl77svaoam2" path="res://menus/generic_popup/generic_popup.gd" id="1_6fcoi"]
+[ext_resource type="FontFile" uid="uid://c1q67vy31h48x" path="res://font/GeistPixel-Regular-VariableFont_ELSH.ttf" id="2_w0372"]
+
+[node name="Popup" type="Control" unique_id=1029054713]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, 1)
+offset_transform_visual_only = false
+script = ExtResource("1_6fcoi")
+
+[node name="Background" type="ColorRect" parent="." unique_id=630630077]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1942749035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=769363126]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1945559270]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=1121264310]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+mouse_filter = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer" unique_id=368418126]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer" unique_id=1346699011]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1459121273]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_fonts/font = ExtResource("2_w0372")
+theme_override_font_sizes/font_size = 30
+text = "Lorem Ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=807854607]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=2020753908]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer" unique_id=95952346]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PopupContent" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=2135805419]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=768258467]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+mouse_filter = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=498907076]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 1

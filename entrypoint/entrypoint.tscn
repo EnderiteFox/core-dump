@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cry6ashvoivmd"]
+
+[ext_resource type="Script" uid="uid://dieviutafiy4f" path="res://entrypoint/entrypoint.gd" id="1_xqeik"]
+
+[node name="Entrypoint" type="Node" unique_id=1769458537]
+script = ExtResource("1_xqeik")

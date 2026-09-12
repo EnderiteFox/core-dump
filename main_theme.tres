@@ -1,0 +1,88 @@
+[gd_resource type="Theme" format=3 uid="uid://bnfyu1tp8xlcr"]
+
+[ext_resource type="FontFile" uid="uid://c1q67vy31h48x" path="res://font/GeistPixel-Regular-VariableFont_ELSH.ttf" id="1_470mv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0omi4"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3, 0.3, 0.3, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_470mv"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 1, 0, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwxg0"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.27450982, 0, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2e4a5"]
+color = Color(0, 1, 0, 0.27450982)
+grow_begin = -20.0
+grow_end = -20.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2l2q"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e4a5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 1, 0, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0.627451, 0, 1)
+Button/colors/font_focus_color = Color(0, 1, 0, 1)
+Button/colors/font_hover_color = Color(0, 1, 0, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_470mv")
+Button/styles/disabled = SubResource("StyleBoxFlat_0omi4")
+Button/styles/focus = SubResource("StyleBoxFlat_470mv")
+Button/styles/hover = SubResource("StyleBoxFlat_470mv")
+Button/styles/normal = SubResource("StyleBoxFlat_nwxg0")
+HSeparator/styles/separator = SubResource("StyleBoxLine_2e4a5")
+Label/fonts/font = ExtResource("1_470mv")
+LineEdit/colors/font_color = Color(0, 1, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 1, 0, 0.39215687)
+LineEdit/font_sizes/font_size = 20
+LineEdit/fonts/font = ExtResource("1_470mv")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_a2l2q")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_2e4a5")
