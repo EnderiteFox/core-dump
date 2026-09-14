@@ -28,6 +28,10 @@ MainServer="*uid://c77x1pojxsnly"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gui]
 
 theme/custom="uid://bnfyu1tp8xlcr"
