@@ -9,7 +9,7 @@ uniform float normal_threshold = 0.2;
 uniform float depth_threshold = 0.0001;
 
 uniform float main_color_intensity = 0.125;
-uniform float secondary_color_intensity = 0.01;
+uniform float secondary_color_intensity = 0.03;
 uniform float secondary_line_offset = 0.25;
 uniform float line_width = 0.003;
 uniform float line_spacing = 0.25;
