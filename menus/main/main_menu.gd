@@ -22,6 +22,7 @@ func _ready() -> void:
 	exit_button.pressed.connect(get_tree().quit)
 	play_button.pressed.connect(_on_play_pressed)
 	username_input.text_changed.connect(_on_username_changed)
+	username_input.text = Settings.username
 	
 	
 func _gui_input(event: InputEvent) -> void:
