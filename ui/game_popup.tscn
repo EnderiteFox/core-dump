@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c7rtm01au0jfa"]
+
+[ext_resource type="Script" uid="uid://csnxxg1w6gebc" path="res://ui/game_popup.gd" id="1_u2m6l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u2m6l"]
+font_size = 30
+
+[node name="Popup" type="Control" unique_id=580373239]
+top_level = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u2m6l")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1098986959]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.27450982)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1810065621]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -65.5
+offset_right = 130.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1832628181]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="PopupText" type="Label" parent="PanelContainer/MarginContainer" unique_id=663452885]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Lorem Ipsum
+Dolor Sit Amet"
+label_settings = SubResource("LabelSettings_u2m6l")
+horizontal_alignment = 1
+vertical_alignment = 1
