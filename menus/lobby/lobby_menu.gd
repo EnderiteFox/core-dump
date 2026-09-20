@@ -68,10 +68,21 @@ func _on_lobby_list_updated(lobbies: Array[LobbyInfo]) -> void:
 				continue
 		
 	for lobby_info in lobbies:
-		if not lobby_list.get_children().any(
-				func(child):
-					return child is LobbyRow and child.server_port == lobby_info.port
-		):
+		var found: bool = false
+		
+		for child in lobby_list.get_children():
+			if not child is LobbyRow:
+				continue
+			
+			var lobby_row: LobbyRow = child as LobbyRow
+			
+			if lobby_row.server_port != lobby_info.port:
+				continue
+			
+			found = true
+			lobby_row.set_lobby_info(lobby_info)
+		
+		if not found:
 			var lobby_row: LobbyRow = LOBBY_ROW_SCENE.instantiate()
 			lobby_row.ready.connect(lobby_row.set_lobby_info.bind(lobby_info), CONNECT_ONE_SHOT)
 			lobby_row.selected.connect(_on_lobby_selected.bind(lobby_row))
