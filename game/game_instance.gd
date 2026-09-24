@@ -5,6 +5,8 @@ extends Node3D
 signal new_chat_message(message: String)
 signal server_ended
 
+signal disconnected(reason: String)
+
 
 const CHAT_CHANNEL: int = 1
 const GAME_EVENT_CHANNEL: int = 2
@@ -12,6 +14,7 @@ const GAME_EVENT_CHANNEL: int = 2
 
 var _lobby_info: LobbyInfo
 
+var pending_profiles: Dictionary[int, PlayerProfile]
 var player_profiles: Dictionary[int, PlayerProfile]
 var mult: MultiplayerAPI
 var is_server: bool
@@ -43,6 +46,8 @@ func _ready() -> void:
 		var player: Player = player_scene.instantiate()
 		self.add_child(player)
 		
+		self.disconnected.connect(_on_disconnection)
+		
 		
 static func get_current(caller: Node) -> GameInstance:
 	var scene_root: Node = caller.get_tree().current_scene
@@ -57,7 +62,7 @@ static func get_current(caller: Node) -> GameInstance:
 func _authenticate_peer(peer_id: int, payload: PackedByteArray) -> void:
 	var auth_data: Dictionary = JSON.parse_string(payload.get_string_from_utf8())
 	var player_profile := PlayerProfile.from_dict(auth_data)
-	player_profiles[peer_id] = player_profile
+	pending_profiles[peer_id] = player_profile
 	
 	mult.complete_auth(peer_id)
 	
@@ -71,6 +76,13 @@ func _authenticate_client(peer_id: int) -> void:
 	
 	
 func _on_peer_connected(peer_id: int) -> void:
+	if player_profiles.size() >= _lobby_info.max_players:
+		send_disconnection.rpc_id(peer_id, "Max players reached")
+		return
+	
+	player_profiles[peer_id] = pending_profiles[peer_id]
+	pending_profiles.erase(peer_id)
+	
 	var encoded_profiles: Dictionary[int, Dictionary]
 	for profile_peer_id: int in player_profiles:
 		encoded_profiles[profile_peer_id] = player_profiles[profile_peer_id].to_dict()
@@ -81,6 +93,9 @@ func _on_peer_connected(peer_id: int) -> void:
 	
 	
 func _on_peer_disconnected(peer_id: int) -> void:
+	if not peer_id in player_profiles:
+		return
+	
 	var player_profile: PlayerProfile = player_profiles[peer_id]
 	on_chat_message.rpc("[color=red]" + player_profile.username + " left the game[/color]")
 	player_profiles.erase(peer_id)
@@ -91,6 +106,13 @@ func _on_peer_disconnected(peer_id: int) -> void:
 	
 	if player_profiles.is_empty():
 		server_ended.emit()
+		
+		
+func _on_disconnection(reason: String) -> void:
+	var lobby_menu_scene: PackedScene = load("uid://bf3ph1ps23j8b")
+	var lobby_menu: LobbyMenu = lobby_menu_scene.instantiate()
+	lobby_menu.disconnection_reason = reason
+	get_tree().change_scene_to_node(lobby_menu)
 
 
 func get_lobby_info() -> LobbyInfo:
@@ -126,3 +148,8 @@ func send_chat_message(message: String) -> void:
 @rpc("authority", "call_remote", "reliable", CHAT_CHANNEL)
 func on_chat_message(message: String) -> void:
 	new_chat_message.emit(message)
+	
+	
+@rpc("authority", "call_remote", "reliable", GAME_EVENT_CHANNEL)
+func send_disconnection(reason: String) -> void:
+	disconnected.emit(reason)
