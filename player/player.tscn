@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://8tqy4johhhsh" path="res://player/game_chat.tscn" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cn4lo44rtoo0w" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="PackedScene" uid="uid://ctjw55t4ro2is" path="res://menus/escape_menu/escape_menu.tscn" id="3_g1dw6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kqu6x"]
 
@@ -16,3 +17,6 @@ shape = SubResource("CylinderShape3D_kqu6x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
 [node name="GameChat" parent="." unique_id=810777183 instance=ExtResource("1_oul6g")]
+
+[node name="EscapeMenu" parent="." unique_id=265776304 instance=ExtResource("3_g1dw6")]
+unique_name_in_owner = true
