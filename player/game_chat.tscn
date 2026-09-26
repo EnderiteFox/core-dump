@@ -5,8 +5,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdbkp"]
 bg_color = Color(0, 0, 0, 0.27450982)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 0, 0.27450982)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pu7dl"]
+bg_color = Color(0.12591082, 0.12591085, 0.12591076, 1)
 
 [node name="GameChat" type="Control" unique_id=810777183]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +65,7 @@ scroll_following = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_pu7dl")
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1296168911]
 layout_mode = 2

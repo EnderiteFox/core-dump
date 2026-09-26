@@ -2,6 +2,10 @@ class_name EscapeMenu
 extends Control
 
 
+signal opened
+signal closed
+
+
 const ANIM_OPEN: StringName = &"open"
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -9,6 +13,7 @@ const ANIM_OPEN: StringName = &"open"
 @onready var leave_button: Button = %LeaveButton
 
 var opening: bool = false
+var _is_open: bool = false
 
 
 func _ready() -> void:
@@ -48,14 +53,22 @@ func _on_settings_button_pressed() -> void:
 
 func _on_leave_button_pressed() -> void:
 	get_tree().change_scene_to_file("uid://bf3ph1ps23j8b")
+	
+	
+func is_open() -> bool:
+	return _is_open
 
 
 func open() -> void:
 	self.visible = true
 	self.opening = true
+	self._is_open = true
 	animation_player.play(ANIM_OPEN)
-	
+	setting_button.grab_focus()
+	opened.emit()
 	
 
 func close() -> void:
+	self._is_open = false
 	animation_player.play_backwards(ANIM_OPEN)
+	closed.emit()
