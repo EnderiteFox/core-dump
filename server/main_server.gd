@@ -2,7 +2,7 @@ extends Node
 
 
 signal lobby_list_updated(lobbies: Array[LobbyInfo])
-signal lobby_created(port: int)
+signal lobby_created(lobby_info: LobbyInfo)
 
 
 const PORT: int = 25765
@@ -56,7 +56,7 @@ func create_lobby(lobby_name: String, max_players: int) -> void:
 	node.add_child(game_instance)
 	self.add_child(node)
 	
-	_on_lobby_created.rpc_id(multiplayer.get_remote_sender_id(), lobby_info.port)
+	_on_lobby_created.rpc_id(multiplayer.get_remote_sender_id(), lobby_info.to_dict())
 	
 	
 func close_lobby(instance: GameInstance) -> void:
@@ -95,5 +95,5 @@ func _on_lobbies_updated(lobbies: Array[Dictionary]) -> void:
 	
 	
 @rpc("authority", "call_remote", "reliable")
-func _on_lobby_created(port: int) -> void:
-	lobby_created.emit(port)
+func _on_lobby_created(lobby_info: Dictionary) -> void:
+	lobby_created.emit(LobbyInfo.from_dict(lobby_info))
