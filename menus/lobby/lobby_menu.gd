@@ -44,6 +44,8 @@ func _ready() -> void:
 	host_menu.exiting.connect(_on_host_menu_closed)
 	host_menu.lobby_created.connect(_on_lobby_creation)
 	
+	MainServer.lobby_created.connect(join_lobby)
+	
 	
 func show_popup(text: String) -> void:
 	var popup: GamePopup = POPUP_SCENE.instantiate()
@@ -126,9 +128,13 @@ func _on_back_pressed() -> void:
 			
 			
 func _on_lobby_selected(lobby_row: LobbyRow) -> void:
+	join_lobby(lobby_row.get_lobby_info())
+	
+	
+func join_lobby(lobby_info: LobbyInfo) -> void:
 	var game_instance_scene: PackedScene = load("uid://cgocrhnt6ganf")
 	var game_instance: GameInstance = game_instance_scene.instantiate()
-	game_instance.set_lobby_info(lobby_row.get_lobby_info())
+	game_instance.set_lobby_info(lobby_info)
 	get_tree().change_scene_to_node(game_instance)
 	
 	
