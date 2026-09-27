@@ -37,6 +37,10 @@ func create_lobby(lobby_name: String, max_players: int) -> void:
 		push_error("Received an empty name")
 		return
 	
+	if max_players < 1 or max_players > 20:
+		push_error("Received a max player count of ", max_players)
+		return
+	
 	var lobby_info := LobbyInfo.new()
 	lobby_info.lobby_name = lobby_name
 	lobby_info.max_players = max_players
