@@ -66,6 +66,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_pu7dl")
+keep_editing_on_text_submit = true
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1296168911]
 layout_mode = 2
