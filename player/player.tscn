@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://8tqy4johhhsh" path="res://player/game_chat.tscn" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cn4lo44rtoo0w" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="PackedScene" uid="uid://cxtm17e7v6a4a" path="res://environment/outline_shader_rect.tscn" id="2_yw30f"]
 [ext_resource type="PackedScene" uid="uid://ctjw55t4ro2is" path="res://menus/escape_menu/escape_menu.tscn" id="3_g1dw6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kqu6x"]
@@ -15,6 +16,9 @@ shape = SubResource("CylinderShape3D_kqu6x")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=712296336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="OutlineShader" parent="Camera3D" unique_id=1251657562 instance=ExtResource("2_yw30f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="GameChat" parent="." unique_id=810777183 node_paths=PackedStringArray("escape_menu") instance=ExtResource("1_oul6g")]
 escape_menu = NodePath("../EscapeMenu")
