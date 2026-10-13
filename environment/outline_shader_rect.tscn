@@ -23,4 +23,5 @@ flip_faces = true
 size = Vector2(2, 2)
 
 [node name="OutlineShader" type="MeshInstance3D" unique_id=1251657562]
+cast_shadow = 0
 mesh = SubResource("QuadMesh_sgrh4")
