@@ -8,6 +8,7 @@ extends Label
 
 func _ready() -> void:
 	slider.value_changed.connect(_on_slider_change)
+	_on_slider_change(slider.value)
 	
 	
 func _on_slider_change(value: float) -> void:
