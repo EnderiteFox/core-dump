@@ -9,6 +9,7 @@ signal closed
 const ANIM_OPEN: StringName = &"open"
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var resume_button: Button = %ResumeButton
 @onready var setting_button: Button = %SettingsButton
 @onready var leave_button: Button = %LeaveButton
 
@@ -19,6 +20,7 @@ var _is_open: bool = false
 func _ready() -> void:
 	self.visible = false
 	animation_player.animation_finished.connect(_on_animation_finished)
+	resume_button.pressed.connect(close)
 	setting_button.pressed.connect(_on_settings_button_pressed)
 	leave_button.pressed.connect(_on_leave_button_pressed)
 	
@@ -64,7 +66,8 @@ func open() -> void:
 	self.opening = true
 	self._is_open = true
 	animation_player.play(ANIM_OPEN)
-	setting_button.grab_focus()
+	resume_button.grab_focus()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	opened.emit()
 	
 
