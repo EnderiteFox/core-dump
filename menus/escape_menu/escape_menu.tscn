@@ -116,6 +116,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
+[node name="ResumeButton" type="Button" parent="Background/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1000290702]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
 [node name="SettingsButton" type="Button" parent="Background/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=55097298]
 unique_name_in_owner = true
 layout_mode = 2
