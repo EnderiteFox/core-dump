@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dq1cd0k7et4xa"]
 
+[ext_resource type="Script" uid="uid://c3lqu3jcj8xsn" path="res://intermission/intermission_level.gd" id="1_rqrmq"]
 [ext_resource type="Material" uid="uid://b4dmgnci3crvd" path="res://material/solid_wireframe.tres" id="2_mimuf"]
 [ext_resource type="FontFile" uid="uid://c1q67vy31h48x" path="res://font/GeistPixel-Regular-VariableFont_ELSH.ttf" id="2_rqrmq"]
 
@@ -163,7 +164,10 @@ data = PackedVector3Array(0, -0.099999994, -0.19999999, -0.19999999, -0.09999999
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d4c7y"]
 data = PackedVector3Array(0, -0.099999994, -0.19999999, -0.19999999, -0.099999994, -0.19999999, -0.19999999, -0.099999994, 0, -0.19999999, -0.099999994, 0, -0.19999999, -0.099999994, -0.19999999, 0, 0, -0.19999999, 0, 0, -0.19999999, 0.19999999, 0.099999994, -0.19999999, -0.19999999, -0.099999994, 0, -0.19999999, -0.099999994, 0, -0.19999999, -0.099999994, 0.19999999, 0, -0.099999994, 0.19999999, -0.19999999, -0.099999994, 0.19999999, -0.19999999, -0.099999994, 0.19999999, 0, -0.099999994, 0.19999999, 0, -0.099999994, -0.19999999, -0.19999999, -0.099999994, 0, 0, -0.099999994, 0.19999999, -0.19999999, -0.099999994, 0, 0.19999999, 0.099999994, -0.19999999, -0.19999999, -0.099999994, 0.19999999, 0, -0.099999994, -0.19999999, 0.19999999, -0.099999994, -0.19999999, 0, 0, -0.19999999, 0, -0.099999994, 0.19999999, 0.19999999, -0.099999994, 0, 0, -0.099999994, -0.19999999, 0, -0.099999994, -0.19999999, 0.19999999, -0.099999994, 0, 0.19999999, -0.099999994, -0.19999999, 0.19999999, -0.099999994, -0.19999999, 0.19999999, 0.099999994, -0.19999999, 0, 0, -0.19999999, 0.19999999, -0.099999994, 0, 0.19999999, -0.099999994, 0.19999999, 0.19999999, 0, 0, 0, -0.099999994, 0.19999999, 0.19999999, -0.099999994, 0.19999999, 0.19999999, -0.099999994, 0, 0, -0.099999994, -0.19999999, 0, 0, -0.19999999, -0.19999999, -0.099999994, -0.19999999, -0.19999999, -0.099999994, 0, -0.19999999, -0.099999994, 0.19999999, -0.19999999, -0.099999994, 0.19999999, 0.19999999, -0.099999994, -0.19999999, 0.19999999, -0.099999994, 0, 0.19999999, 0, 0, 0, -0.099999994, 0.19999999, -0.19999999, -0.099999994, 0.19999999, 0.19999999, 0.099999994, -0.19999999, 0, -0.099999994, 0.19999999, 0.19999999, 0, 0, 0.19999999, -0.099999994, 0.19999999, 0.19999999, -0.099999994, -0.19999999, 0.19999999, 0, 0, 0.19999999, 0.099999994, -0.19999999, 0, -0.099999994, 0.19999999, 0.19999999, 0.099999994, -0.19999999, 0.19999999, 0, 0)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sgrh4"]
+
 [node name="Intermission" type="Node3D" unique_id=1306975119]
+script = ExtResource("1_rqrmq")
 
 [node name="FloatingDecorations" type="Node3D" parent="." unique_id=225314837]
 
@@ -386,8 +390,8 @@ font = ExtResource("2_rqrmq")
 
 [node name="SpawningPlatform" type="StaticBody3D" parent="." unique_id=212645775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 2)
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpawningPlatform" unique_id=1725727803]
 material_override = ExtResource("2_mimuf")
@@ -467,3 +471,17 @@ mesh = SubResource("ArrayMesh_562sb")
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="SpawningPlatform" unique_id=474413844]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.7, 0, 1.6999998)
 shape = SubResource("ConcavePolygonShape3D_d4c7y")
+
+[node name="Void" type="Area3D" parent="." unique_id=324078816]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Void" unique_id=364120080]
+shape = SubResource("WorldBoundaryShape3D_sgrh4")
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=884723866]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20000005, 2)
