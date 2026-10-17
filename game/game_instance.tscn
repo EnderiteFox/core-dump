@@ -9,5 +9,6 @@ script = ExtResource("1_bp538")
 
 [node name="Intermission" parent="." unique_id=1306975119 instance=ExtResource("2_7rpgn")]
 unique_name_in_owner = true
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" parent="." unique_id=1930595418 instance=ExtResource("3_8b8kn")]
