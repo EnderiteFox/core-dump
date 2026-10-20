@@ -12,3 +12,10 @@ unique_name_in_owner = true
 metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" parent="." unique_id=1930595418 instance=ExtResource("3_8b8kn")]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1718498370]
+_spawnable_scenes = PackedStringArray("uid://nayrdjp0c8eh")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node3D" parent="." unique_id=761634257]
+unique_name_in_owner = true

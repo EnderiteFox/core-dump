@@ -12,6 +12,9 @@ const CHAT_CHANNEL: int = 1
 const GAME_EVENT_CHANNEL: int = 2
 
 
+@onready var players: Node3D = %Players
+@onready var intermission_level: IntermissionLevel = %Intermission
+
 var _lobby_info: LobbyInfo
 
 var pending_profiles: Dictionary[int, PlayerProfile]
@@ -41,10 +44,6 @@ func _ready() -> void:
 		self.multiplayer.multiplayer_peer = peer
 		self.multiplayer.auth_callback = func(): pass
 		self.multiplayer.peer_authenticating.connect(_authenticate_client)
-		
-		var player_scene: PackedScene = load("uid://nayrdjp0c8eh")
-		var player: Player = player_scene.instantiate()
-		self.add_child(player)
 		
 		self.disconnected.connect(_on_disconnection)
 		
@@ -80,6 +79,8 @@ func _on_peer_connected(peer_id: int) -> void:
 		send_disconnection.rpc_id(peer_id, "Max players reached")
 		return
 	
+	add_player(peer_id)
+	
 	player_profiles[peer_id] = pending_profiles[peer_id]
 	pending_profiles.erase(peer_id)
 	
@@ -93,6 +94,8 @@ func _on_peer_connected(peer_id: int) -> void:
 	
 	
 func _on_peer_disconnected(peer_id: int) -> void:
+	remove_player(peer_id)
+	
 	if not peer_id in player_profiles:
 		return
 	
@@ -122,6 +125,23 @@ func get_lobby_info() -> LobbyInfo:
 
 func set_lobby_info(info: LobbyInfo) -> void:
 	_lobby_info = info
+	
+
+func add_player(player_id: int) -> void:
+	const player_scene: PackedScene = preload("uid://nayrdjp0c8eh")
+	var player: Player = player_scene.instantiate()
+	player.player_id = player_id
+	player.name = str(player_id)
+	player.position = intermission_level.spawn_point.global_position
+	players.add_child(player)
+
+
+func remove_player(player_id: int) -> void:
+	if not players.has_node(str(player_id)):
+		return
+	var player: Player = players.get_node(str(player_id))
+	player.leaving_game.emit()
+	player.queue_free()
 	
 	
 @rpc("authority", "call_remote", "reliable", GAME_EVENT_CHANNEL)
