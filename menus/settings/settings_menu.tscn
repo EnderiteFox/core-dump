@@ -3,6 +3,8 @@
 [ext_resource type="FontFile" uid="uid://c1q67vy31h48x" path="res://font/GeistPixel-Regular-VariableFont_ELSH.ttf" id="1_2e4a5"]
 [ext_resource type="Script" uid="uid://vew0j4u5rb6x" path="res://menus/settings/settings_menu.gd" id="1_n0cus"]
 [ext_resource type="Script" uid="uid://b6uri2q6uqggt" path="res://menus/settings/input/setting_line_edit.gd" id="3_od2kw"]
+[ext_resource type="Script" uid="uid://bmlcs80wffjg" path="res://menus/settings/input/setting_slider.gd" id="4_hw0oh"]
+[ext_resource type="Script" uid="uid://rucb4q1p4fre" path="res://ui/slider_label.gd" id="4_y2evm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2rexg"]
 font_size = 20
@@ -133,6 +135,38 @@ emoji_menu_enabled = false
 virtual_keyboard_type = 2
 script = ExtResource("3_od2kw")
 setting_name = &"server_port"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="SettingsMenu/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1992620829]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2130882486]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sensitivity"
+label_settings = SubResource("LabelSettings_jinmx")
+
+[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=673924380]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.9
+min_value = 1.0
+max_value = 30.0
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 3
+script = ExtResource("4_hw0oh")
+setting_name = &"sensitivity"
+integer = true
+
+[node name="SliderLabel" type="Label" parent="SettingsMenu/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1370280868 node_paths=PackedStringArray("slider")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+script = ExtResource("4_y2evm")
+slider = NodePath("../HSlider")
+metadata/_custom_type_script = "uid://rucb4q1p4fre"
 
 [node name="Control2" type="Control" parent="SettingsMenu/VBoxContainer" unique_id=768258467]
 layout_mode = 2
