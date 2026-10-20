@@ -5,6 +5,7 @@ const SAVE_PATH: String = "user://settings.ini"
 var username: String
 var server_ip: String
 var server_port: String
+var sensitivity: float
 
 
 func _ready() -> void:
@@ -18,6 +19,7 @@ func save_settings() -> void:
 	config.set_value("Profile", "username", username)
 	config.set_value("Server", "server_ip", server_ip)
 	config.set_value("Server", "server_port", server_port)
+	config.set_value("Input", "sensitivity", sensitivity)
 	
 	var error: int = config.save(SAVE_PATH)
 	if error:
@@ -39,3 +41,4 @@ func load_settings() -> void:
 	username = config.get_value("Profile", "username", "")
 	server_ip = config.get_value("Server", "server_ip", "127.0.0.1")
 	server_port = config.get_value("Server", "server_port", "25765")
+	sensitivity = config.get_value("Input", "sensitivity", 15)

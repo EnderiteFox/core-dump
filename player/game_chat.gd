@@ -11,9 +11,14 @@ signal closed
 
 
 @export var escape_menu: EscapeMenu
+@export var player: Player
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
+	if not player.is_local:
+		queue_free()
+		return
+
 	var game_instance := GameInstance.get_current(self)
 	game_instance.new_chat_message.connect(_on_chat_message)
 	chat_line_edit.text_submitted.connect(_on_send_message)
