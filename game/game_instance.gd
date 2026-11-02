@@ -48,6 +48,11 @@ func _ready() -> void:
 		self.disconnected.connect(_on_disconnection)
 		
 		
+func _exit_tree() -> void:
+	if is_server:
+		get_tree().set_multiplayer(null, self.get_parent().get_path())
+		
+		
 static func get_current(caller: Node) -> GameInstance:
 	var scene_root: Node = caller.get_tree().current_scene
 	
