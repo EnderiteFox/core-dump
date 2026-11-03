@@ -24,6 +24,9 @@ func _unhandled_input(input_event: InputEvent) -> void:
 		if player.menu.is_open():
 			return
 		
+		if player.chat.is_open():
+			return
+		
 		if not player.capturing_cursor:
 			return
 		
@@ -41,6 +44,9 @@ func _unhandled_input(input_event: InputEvent) -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if player.chat.is_open():
+		return
+	
 	if event.is_action_pressed(&"sprint"):
 		set_sprint.rpc(not sprinting)
 		get_viewport().set_input_as_handled()
@@ -53,6 +59,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	
 	
 func _process(_delta: float) -> void:
+	if player.chat.is_open():
+		direction = Vector2.ZERO
+		return
+	
 	direction = Input.get_vector(
 			&"move_left",
 			&"move_right",
