@@ -71,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="GameChat" parent="." unique_id=810777183 node_paths=PackedStringArray("escape_menu", "player") instance=ExtResource("1_oul6g")]
+unique_name_in_owner = true
 escape_menu = NodePath("../EscapeMenu")
 player = NodePath("..")
 
