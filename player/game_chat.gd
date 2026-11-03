@@ -14,7 +14,7 @@ signal closed
 @export var player: Player
 
 
-func _enter_tree() -> void:
+func setup() -> void:
 	if not player.is_local:
 		queue_free()
 		return

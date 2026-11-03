@@ -40,6 +40,7 @@ const WALL_RUN_GRAVITY_FACTOR: float = 0.85
 
 
 @onready var menu: EscapeMenu = %EscapeMenu
+@onready var chat: GameChat = %GameChat
 @onready var camera_pivot: Node3D = %CameraPivot
 @onready var camera: Camera3D = %Camera
 @onready var mesh: Node3D = %PlayerMesh
@@ -76,10 +77,12 @@ func _ready() -> void:
 		mesh = null
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		menu.closed.connect(_on_menu_closed)
+		chat.setup()
 	else:
 		# Non-local initialization
 		mesh.visible = true
 		menu.queue_free()
+		chat.queue_free()
 		menu = null
 
 
