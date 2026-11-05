@@ -5,3 +5,11 @@ var lobby_name: String
 var max_players: int
 var player_count: int = 0
 var port: int
+var state := LobbyState.WAITING
+var level: int = 0
+
+enum LobbyState {
+	WAITING,
+	INTERMISSION,
+	INROUND
+}
