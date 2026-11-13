@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cj17pnsnscatg"]
+
+[ext_resource type="Script" uid="uid://rlcjvhjkdwtg" path="item_data.gd" id="1_rjrlq"]
+
+[resource]
+script = ExtResource("1_rjrlq")
+id = &"lower_gravity"
+metadata/_custom_type_script = "uid://rlcjvhjkdwtg"
