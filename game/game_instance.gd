@@ -14,6 +14,7 @@ const GAME_EVENT_CHANNEL: int = 2
 
 @onready var players: Node3D = %Players
 @onready var intermission_level: IntermissionLevel = %Intermission
+@onready var item_manager: ItemManager
 
 var _lobby_info: LobbyInfo
 
