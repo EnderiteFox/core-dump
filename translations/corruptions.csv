@@ -1,0 +1,7 @@
+keys,en
+corruption.placeholder.name,Placeholder Corruption
+corruption.placeholder.description,A test corruption. You should not see this. What are you seeking?
+corruption.higher_gravity.name,Higher gravity
+corruption.higher_gravity.description,Increases gravity by 20%
+corruption.lower_gravity.name,Lower gravity
+corruption.lower_gravity.description,Lowers gravity by 14%
