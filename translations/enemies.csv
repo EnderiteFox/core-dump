@@ -1,0 +1,6 @@
+keys,en
+enemies.placeholder.name,Placeholder enemy
+enemies.placeholder.description,A test enemy. You should not see this. What are you seeking?
+enemies.datamine.name,Datamine
+enemies.datamine.description,Appears after collecting data. Collect it before it disconnects you.
+enemies.datamine.tip,You can't collect it immediately. Wait until it activates

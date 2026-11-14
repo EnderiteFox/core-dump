@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cj17pnsnscatg"]
+
+[ext_resource type="Script" uid="uid://rlcjvhjkdwtg" path="res://items/base/item_data.gd" id="1_rjrlq"]
+[ext_resource type="Script" uid="uid://vhaw1kru3h22" path="res://value_modifiers/base_modifiers/base_modifier.gd" id="2_7wowd"]
+[ext_resource type="Script" uid="uid://qyyn3up7gog0" path="res://value_modifiers/base_modifiers/float_modifier.gd" id="3_h52gr"]
+
+[sub_resource type="Resource" id="Resource_bssri"]
+script = ExtResource("3_h52gr")
+value = -0.14
+effect = 2
+metadata/_custom_type_script = "uid://qyyn3up7gog0"
+
+[resource]
+script = ExtResource("1_rjrlq")
+id = &"lower_gravity"
+value_modifiers = Array[ExtResource("2_7wowd")]([SubResource("Resource_bssri")])
+metadata/_custom_type_script = "uid://rlcjvhjkdwtg"
