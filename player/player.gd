@@ -55,11 +55,15 @@ const WALL_RUN_GRAVITY_FACTOR: float = 0.85
 
 var is_local: bool = false
 var capturing_cursor: bool = true
-var gravity: float = ProjectSettings.get(&"physics/3d/default_gravity")
 var wall_run_direction := WallRunDirection.NONE
 var can_wall_run: bool = true
 var wall_run_time: float = 0.0
 var wall_run_cooldown_timer: SceneTreeTimer = null
+var game_instance: GameInstance
+
+
+func _enter_tree() -> void:
+	self.game_instance = GameInstance.get_current(self)
 
 
 func _ready() -> void:
@@ -123,6 +127,9 @@ func _physics_process(delta: float) -> void:
 			wall_run_end.emit()
 		if wall_run_time > WALL_RUN_MAX_TIME:
 			# Wall run falloff, reduce gravity
+			var gravity: float = game_instance.value_modifier_manager.get_float_value(
+					FloatModifier.FloatValueId.GRAVITY
+			)
 			self.velocity.y -= gravity * delta * WALL_RUN_FALLOFF_GRAVITY_REDUCTION
 		else:
 			# Hold player in the air while wallrunning
@@ -131,6 +138,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		if not self.is_on_floor():
 			# Apply normal gravity
+			var gravity: float = game_instance.value_modifier_manager.get_float_value(
+					FloatModifier.FloatValueId.GRAVITY
+			)
 			self.velocity.y -= gravity * delta
 		else:
 			# Reset velocity when touching ground
