@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dq1cd0k7et4xa" path="res://intermission/intermission.tscn" id="2_7rpgn"]
 [ext_resource type="Script" uid="uid://dw1tldfvb2xlo" path="res://items/manager/item_manager.gd" id="2_8b8kn"]
 [ext_resource type="PackedScene" uid="uid://w1pay701iunq" path="res://environment/world_environment.tscn" id="3_8b8kn"]
+[ext_resource type="Script" uid="uid://dy2jixbn3wba1" path="res://value_modifiers/value_modifier_manager.gd" id="3_bssri"]
 
 [node name="GameInstance" type="Node3D" unique_id=900433157]
 script = ExtResource("1_bp538")
@@ -12,6 +13,11 @@ script = ExtResource("1_bp538")
 unique_name_in_owner = true
 script = ExtResource("2_8b8kn")
 metadata/_custom_type_script = "uid://dw1tldfvb2xlo"
+
+[node name="ValueModifierManager" type="Node" parent="." unique_id=567463970]
+unique_name_in_owner = true
+script = ExtResource("3_bssri")
+metadata/_custom_type_script = "uid://dy2jixbn3wba1"
 
 [node name="Intermission" parent="." unique_id=1306975119 instance=ExtResource("2_7rpgn")]
 unique_name_in_owner = true

@@ -14,3 +14,5 @@ extends Resource
 ## The maximum amount of times you can select this item in votes[br]
 ## When reached, the item doesn't appear in votes
 @export var max_selection_stacks: int = 1
+## The value modifiers for the item
+@export var value_modifiers: Array[BaseModifier]
