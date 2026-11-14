@@ -57,13 +57,15 @@ func _exit_tree() -> void:
 		
 		
 static func get_current(caller: Node) -> GameInstance:
-	var scene_root: Node = caller.get_tree().current_scene
+	var parent: Node = caller
+	while parent != null and parent is not GameInstance:
+		parent = parent.get_parent()
 	
-	if not scene_root is GameInstance:
-		push_error("Tried to get game instance, but the root is not a game instance")
+	if parent == null:
+		push_error("Tried to get game instance but did not find it in parent nodes")
 		return null
 	
-	return scene_root
+	return parent
 
 
 func _authenticate_peer(peer_id: int, payload: PackedByteArray) -> void:
