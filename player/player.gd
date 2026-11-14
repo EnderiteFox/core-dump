@@ -27,7 +27,7 @@ const WALL_RUN_MIN_WALL_VERTICAL_ANGLE: float = deg_to_rad(-10)
 const WALL_RUN_MAX_WALL_VERTICAL_ANGLE: float = deg_to_rad(20)
 const WALL_RUN_COOLDOWN: float = 0.3
 const WALL_RUN_MINIMUM_HORIZONTAL_VELOCITY: float = 2.0
-const WALL_RUN_START_MAXIMUM_VELOCITY: float = 0.25
+const WALL_RUN_START_MAXIMUM_VERTICAL_VELOCITY: float = 0.25
 const WALL_RUN_GRAVITY_FACTOR: float = 0.85
 
 ## Set by the authority, synchronized on spawn[br]
@@ -198,7 +198,7 @@ func _handle_wall_run() -> Vector3:
 	# Can't wall run if moving up too fast
 	if not can_wall_run\
 	or not input.sprinting\
-	or self.velocity.y > WALL_RUN_START_MAXIMUM_VELOCITY:
+	or self.velocity.y > WALL_RUN_START_MAXIMUM_VERTICAL_VELOCITY:
 		if prev_wall_run_direction != WallRunDirection.NONE:
 			wall_run_direction = WallRunDirection.NONE
 			wall_run_end.emit()
