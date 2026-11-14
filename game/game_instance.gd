@@ -14,7 +14,9 @@ const GAME_EVENT_CHANNEL: int = 2
 
 @onready var players: Node3D = %Players
 @onready var intermission_level: IntermissionLevel = %Intermission
-@onready var item_manager: ItemManager
+
+@export var item_manager: ItemManager
+@export var value_modifier_manager: ValueModifierManager
 
 var _lobby_info: LobbyInfo
 
@@ -140,6 +142,9 @@ func add_player(player_id: int) -> void:
 	player.name = str(player_id)
 	player.position = intermission_level.spawn_point.global_position
 	players.add_child(player)
+	
+	# Synchronize items
+	item_manager.synchronize_with_peer(player_id)
 
 
 func remove_player(player_id: int) -> void:
