@@ -16,6 +16,8 @@ extends Resource
 @export var max_selection_stacks: int = 1
 ## The value modifiers for the item
 @export var value_modifiers: Array[BaseModifier]
+## The requirement to get the item
+@export var item_requirement: BaseRequirement = null
 
 
 enum Category {
