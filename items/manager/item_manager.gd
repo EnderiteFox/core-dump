@@ -109,6 +109,40 @@ func remove_item(category: ItemData.Category, id: StringName, temporary: bool) -
 			instance.instance_changed.emit()
 
 
+## Returns the current stacks for an item[br]
+## Allows selecting among permanent or temporary (or both) items
+func get_item_stacks(
+		category: ItemData.Category,
+		item_id: StringName,
+		include_permanent: bool,
+		include_temporary: bool
+) -> int:
+	if not include_permanent and not include_temporary:
+		push_error("Trying to call get_item_stacks with no permanent and no temporary, result will always be 0")
+		return 0
+	
+	var items: Array[ItemInstance] = _items[category].data.filter(
+			func (item: ItemInstance) -> bool:
+				return item.id == item_id
+	)
+	
+	if not include_permanent:
+		# Exclude permanent items (filter by temporary)
+		items = items.filter(
+				func (item: ItemInstance) -> bool:
+					return item.levels_left >= 0
+		)
+		
+	if not include_temporary:
+		# Exclude temporary items (filter by permanent)
+		items = items.filter(
+				func (item: ItemInstance) -> bool:
+					return item.levels_left < 0
+		)
+	
+	return items.reduce(func(accum: int, item: ItemInstance) -> int: return accum + item.stacks, 0)
+
+
 @rpc("authority", "call_local", "reliable")
 func reset() -> void:
 	for category: ItemData.Category in _items.keys():

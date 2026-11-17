@@ -25,6 +25,8 @@ var player_profiles: Dictionary[int, PlayerProfile]
 var mult: MultiplayerAPI
 var is_server: bool
 
+var current_level: int = 0
+
 
 func _ready() -> void:
 	if DisplayServer.get_name() == "headless":
