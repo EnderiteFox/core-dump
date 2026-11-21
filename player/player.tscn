@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cn4lo44rtoo0w" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://cxtm17e7v6a4a" path="res://environment/outline_shader_rect.tscn" id="2_yw30f"]
 [ext_resource type="PackedScene" uid="uid://ctjw55t4ro2is" path="res://menus/escape_menu/escape_menu.tscn" id="3_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://dw5atfka3ttgd" path="res://menus/items_menu/item_menu.tscn" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://b76pg4le65eh6" path="res://player/player_input.gd" id="5_qjkh3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kqu6x"]
@@ -72,12 +73,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="GameChat" parent="." unique_id=810777183 node_paths=PackedStringArray("escape_menu", "player") instance=ExtResource("1_oul6g")]
 unique_name_in_owner = true
+z_index = 1
 escape_menu = NodePath("../EscapeMenu")
 player = NodePath("..")
 
 [node name="EscapeMenu" parent="." unique_id=265776304 instance=ExtResource("3_g1dw6")]
 unique_name_in_owner = true
 visible = false
+
+[node name="ItemMenu" parent="." unique_id=2139332051 node_paths=PackedStringArray("player") instance=ExtResource("5_g6k8r")]
+visible = false
+player = NodePath("..")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=208650258]
 unique_name_in_owner = true

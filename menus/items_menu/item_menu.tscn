@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dw5atfka3ttgd"]
+
+[ext_resource type="Script" uid="uid://l424nihajc1d" path="res://menus/items_menu/item_menu.gd" id="1_4yv65"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nyy4"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.5019608)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 1, 0, 1)
+
+[node name="ItemMenu" type="Control" unique_id=2139332051 node_paths=PackedStringArray("item_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4yv65")
+item_container = NodePath("HBoxContainer/PanelContainer/Items")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1201508353]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1920302354]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1536097181]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nyy4")
+
+[node name="Items" type="FlowContainer" parent="HBoxContainer/PanelContainer" unique_id=1512414459]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+alignment = 1
+last_wrap_alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=1885258342]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
