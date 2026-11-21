@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b4ovtbxskcdff"]
+
+[ext_resource type="Script" uid="uid://dtolay4o3ey8s" path="res://menus/items_menu/item_instance_ui.gd" id="1_87sh5"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1u56i"]
+size = Vector2(64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_87sh5"]
+font_size = 32
+
+[node name="ItemInstanceUi" type="TextureRect" unique_id=332210629 node_paths=PackedStringArray("_stack_count_label")]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_auto_translate_mode = 2
+mouse_filter = 0
+texture = SubResource("PlaceholderTexture2D_1u56i")
+script = ExtResource("1_87sh5")
+_stack_count_label = NodePath("StackCountLabel")
+
+[node name="StackCountLabel" type="Label" parent="." unique_id=22740417]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+offset_right = 40.0
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.2, 0.4)
+mouse_filter = 1
+text = "1"
+label_settings = SubResource("LabelSettings_87sh5")
+horizontal_alignment = 1
+vertical_alignment = 1
