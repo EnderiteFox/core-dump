@@ -19,6 +19,7 @@ border_color = Color(0, 1, 0, 1)
 font_size = 24
 
 [node name="ItemTooltip" type="PanelContainer" unique_id=92955353 node_paths=PackedStringArray("title", "description")]
+z_index = 1
 offset_right = 8.0
 offset_bottom = 8.0
 offset_transform_enabled = true
