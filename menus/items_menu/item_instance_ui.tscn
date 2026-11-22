@@ -9,6 +9,7 @@ size = Vector2(64, 64)
 font_size = 32
 
 [node name="ItemInstanceUi" type="TextureRect" unique_id=332210629 node_paths=PackedStringArray("_stack_count_label")]
+texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 anchors_preset = 8
 anchor_left = 0.5
