@@ -8,7 +8,7 @@ extends BaseModifier
 
 
 @abstract
-func get_value(game_instance: GameInstance) -> float
+func get_value(game_instance: GameInstance, stacks: int) -> float
 
 
 enum FloatValueId {
