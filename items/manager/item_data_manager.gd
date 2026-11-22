@@ -29,6 +29,10 @@ func _load_data_dict(item_category: ItemData.Category, folder: String) -> void:
 			push_warning("Found a subfolder in item datas at ", folder, "/", path)
 			continue
 		
+		if not path.ends_with(".tres"):
+			# Ignore icons
+			continue
+		
 		var data = load(folder + "/" + path)
 		if data is not ItemData:
 			push_error("Found a non-ItemData file at ", folder, "/", path)
