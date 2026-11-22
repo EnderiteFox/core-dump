@@ -21,20 +21,6 @@ var _float_value_defaults: Dictionary[FloatModifier.FloatValueId, float] = {
 }
 
 
-func _get_all_modifiers() -> Array[BaseModifier]:
-	var modifiers: Array[BaseModifier] = []
-	
-	for category: ItemData.Category in ItemData.Category.values():
-		var item_instances: Array[ItemInstance] = item_manager.get_items(category)
-		for item: ItemInstance in item_instances:
-			var data: ItemData = ItemDataManager.get_item_data(category, item.id)
-			if data == null:
-				continue
-			modifiers.append_array(data.value_modifiers)
-	
-	return modifiers
-
-
 ## Registers a modifier that lives outside the item system
 func register_modifier(modifier: BaseModifier) -> void:
 	_registered_modifiers.append(modifier)
@@ -52,43 +38,109 @@ func reset_registered_modifiers() -> void:
 
 ## Returns a bool value after applying modifiers
 func get_bool_value(bool_value_id: BoolModifier.BoolValueId) -> bool:
-	var bool_modifiers: Array[BaseBoolModifier] = []
-	for modifier: BaseModifier in _get_all_modifiers():
-		if modifier is BaseBoolModifier and modifier.bool_value_id == bool_value_id:
-			bool_modifiers.append(modifier)
+	# Store the stacks for the modifier
+	var modifier_stacks: Dictionary[BaseBoolModifier, int]
+	
+	# Item modifiers
+	for category: ItemData.Category in ItemData.Category.values():
+		for item: ItemInstance in item_manager.get_items(category):
+			var item_data: ItemData = ItemDataManager.get_item_data(category, item.id)
+			if item_data == null:
+				continue
+			
+			for base_modifier: BaseModifier in item_data.value_modifiers:
+				# Ignore non-bool modifiers
+				if base_modifier is not BaseBoolModifier:
+					continue
+				
+				var modifier: BaseBoolModifier = base_modifier
+				
+				# Get the modifiers for the desired id
+				if modifier.bool_value_id != bool_value_id:
+					continue
+				
+				modifier_stacks[modifier] = item.stacks
+	
+	# Registered modifiers
+	for base_modifier: BaseModifier in _registered_modifiers:
+		if base_modifier is not BaseBoolModifier:
+			continue
+		
+		var modifier: BaseBoolModifier = base_modifier
+		
+		if modifier.bool_value_id != bool_value_id:
+			continue
+		
+		# Registered modifiers always have only one stack
+		modifier_stacks[modifier] = 1
 	
 	var value: bool = _bool_value_defaults.get(bool_value_id, false)
-	for modifier: BaseBoolModifier in bool_modifiers:
+	
+	for modifier: BaseBoolModifier in modifier_stacks.keys():
 		match modifier.effect:
 			BaseBoolModifier.EffectType.SET:
-				value = modifier.get_value(game_instance)
+				value = modifier.get_value(game_instance, modifier_stacks[modifier])
 			BaseBoolModifier.EffectType.AND:
-				value = value and modifier.get_value(game_instance)
+				value = value and modifier.get_value(game_instance, modifier_stacks[modifier])
 			BaseBoolModifier.EffectType.OR:
-				value = value or modifier.get_value(game_instance)
+				value = value or modifier.get_value(game_instance, modifier_stacks[modifier])
 			BaseBoolModifier.EffectType.XOR:
-				value = (not value) or (not modifier.get_value(game_instance))
+				value = (not value) or (not modifier.get_value(game_instance, modifier_stacks[modifier]))
+	
 	return value
 
 
 ## Returns a float value after applying modifiers
 func get_float_value(float_value_id: FloatModifier.FloatValueId) -> float:
-	var float_modifiers: Array[BaseFloatModifier] = []
-	for modifier: BaseModifier in _get_all_modifiers():
-		if modifier is BaseFloatModifier and modifier.float_value_id == float_value_id:
-			float_modifiers.append(modifier)
+	# Store the stacks for the modifier
+	var modifier_stacks: Dictionary[BaseFloatModifier, int]
+	
+	# Item modifiers
+	for category: ItemData.Category in ItemData.Category.values():
+		for item: ItemInstance in item_manager.get_items(category):
+			var item_data: ItemData = ItemDataManager.get_item_data(category, item.id)
+			if item_data == null:
+				continue
+			
+			for base_modifier: BaseModifier in item_data.value_modifiers:
+				# Ignore non-float modifiers
+				if base_modifier is not BaseFloatModifier:
+					continue
+				
+				var modifier: BaseFloatModifier = base_modifier
+				
+				# Get the modifiers for the desired id
+				if modifier.float_value_id != float_value_id:
+					continue
+				
+				modifier_stacks[modifier] = item.stacks
+	
+	# Registered modifiers
+	for base_modifier: BaseModifier in _registered_modifiers:
+		if base_modifier is not BaseFloatModifier:
+			continue
+		
+		var modifier: BaseFloatModifier = base_modifier
+		
+		if modifier.float_value_id != float_value_id:
+			continue
+		
+		# Registered modifiers always have only one stack
+		modifier_stacks[modifier] = 1
 	
 	var value: float = _float_value_defaults.get(float_value_id, 0.0)
 	var multiplier: float = 1.0
 	var global_multiplier: float = 1.0
-	for modifier: BaseFloatModifier in float_modifiers:
+	
+	for modifier: BaseFloatModifier in modifier_stacks.keys():
 		match modifier.effect:
 			BaseFloatModifier.EffectType.SET:
-				value = modifier.get_value(game_instance)
+				value = modifier.get_value(game_instance, modifier_stacks[modifier])
 			BaseFloatModifier.EffectType.ADD:
-				value += modifier.get_value(game_instance)
+				value += modifier.get_value(game_instance, modifier_stacks[modifier])
 			BaseFloatModifier.EffectType.ADD_MULTIPLIER:
-				multiplier += modifier.get_value(game_instance)
+				multiplier += modifier.get_value(game_instance, modifier_stacks[modifier])
 			BaseFloatModifier.EffectType.GLOBAL_MULTIPLY:
-				global_multiplier *= modifier.get_value(game_instance)
+				global_multiplier *= modifier.get_value(game_instance, modifier_stacks[modifier])
+	
 	return value * multiplier * global_multiplier
