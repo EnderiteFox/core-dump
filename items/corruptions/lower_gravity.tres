@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cj17pnsnscatg"]
 
+[ext_resource type="Texture2D" uid="uid://bnkhecxbb3j23" path="res://items/corruptions/lower_gravity.png" id="1_535nw"]
 [ext_resource type="Script" uid="uid://rlcjvhjkdwtg" path="res://items/base/item_data.gd" id="1_rjrlq"]
 [ext_resource type="Script" uid="uid://gxw4o1gpmybl" path="res://value_modifiers/base_modifiers/base_modifier.gd" id="2_7wowd"]
 [ext_resource type="Script" uid="uid://c0ox060jglq2q" path="res://value_modifiers/base_modifiers/float_modifier.gd" id="3_h52gr"]
@@ -12,5 +13,6 @@ effect = 2
 [resource]
 script = ExtResource("1_rjrlq")
 id = &"lower_gravity"
+icon = ExtResource("1_535nw")
 value_modifiers = Array[ExtResource("2_7wowd")]([SubResource("Resource_bssri")])
 metadata/_custom_type_script = "uid://rlcjvhjkdwtg"
