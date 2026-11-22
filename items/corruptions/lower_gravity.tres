@@ -3,7 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://bnkhecxbb3j23" path="res://items/corruptions/lower_gravity.png" id="1_535nw"]
 [ext_resource type="Script" uid="uid://rlcjvhjkdwtg" path="res://items/base/item_data.gd" id="1_rjrlq"]
 [ext_resource type="Script" uid="uid://gxw4o1gpmybl" path="res://value_modifiers/base_modifiers/base_modifier.gd" id="2_7wowd"]
+[ext_resource type="Script" uid="uid://cwj8aabci80cb" path="res://items/requirements/other_item_requirement.gd" id="2_oj6om"]
+[ext_resource type="Script" uid="uid://poknucvtww8v" path="res://items/requirements/not_requirement.gd" id="3_cd5ul"]
 [ext_resource type="Script" uid="uid://c0ox060jglq2q" path="res://value_modifiers/base_modifiers/float_modifier.gd" id="3_h52gr"]
+
+[sub_resource type="Resource" id="Resource_hh8pj"]
+script = ExtResource("2_oj6om")
+item_category = 1
+item_id = &"higher_gravity"
+included_items = 2
+metadata/_custom_type_script = "uid://cwj8aabci80cb"
+
+[sub_resource type="Resource" id="Resource_xqeik"]
+script = ExtResource("3_cd5ul")
+requirement = SubResource("Resource_hh8pj")
+metadata/_custom_type_script = "uid://poknucvtww8v"
 
 [sub_resource type="Resource" id="Resource_bssri"]
 script = ExtResource("3_h52gr")
@@ -15,4 +29,5 @@ script = ExtResource("1_rjrlq")
 id = &"lower_gravity"
 icon = ExtResource("1_535nw")
 value_modifiers = Array[ExtResource("2_7wowd")]([SubResource("Resource_bssri")])
+item_requirement = SubResource("Resource_xqeik")
 metadata/_custom_type_script = "uid://rlcjvhjkdwtg"
